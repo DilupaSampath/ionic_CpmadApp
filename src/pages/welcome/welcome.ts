@@ -20,6 +20,7 @@ export class WelcomePage {
   // private noteListRef = this.db.list<any>('Workers/asd');
   properties: any[];
   chats: any[];
+  chatsUser: any[];
   page = 'PropertyListPage';
   userType: any;
   userEmail; string;
@@ -32,47 +33,59 @@ export class WelcomePage {
   workers: any[] = [
     {
       "name": 'Masons',
-      "url": '/../resources/androidicon/rawable-hdpi-icon.png'
+      "url": 'https://image.freepik.com/free-icon/construction-worker_318-105590.jpg'
     },
     {
       "name": "Tile",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX3exoyroQB1Ymb1-kQ0G0fV_ePRdIDR9j7rdmNcXi5aELKG5G"
     },
     {
       "name": "Carpenters",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://cdn1.iconfinder.com/data/icons/misc-v-4/512/repair_carpenter_builder_joiner-256.png"
     },
     {
       "name": "Plumbers",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://www.shareicon.net/data/128x128/2016/02/04/714030_drop_512x512.png"
     },
     {
       "name": "Electricians",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://cdn.iconscout.com/public/images/icon/premium/png-128/electrical-plug-connector-in-power-34c259541c01deed-128x128.png"
     },
     {
       "name": "Painters",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://www.shareicon.net/data/256x256/2016/01/08/699987_people_512x512.png"
     },
     {
       "name": "Ceiling",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://cdn0.iconfinder.com/data/icons/construction-and-maintenance-2/50/Roof-256.png"
     },
     {
       "name": "Landscaping",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://www.shareicon.net/data/256x256/2016/01/08/699913_people_512x512.png"
     },
     {
       "name": "Welding",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://image.flaticon.com/icons/png/128/289/289810.png"
     },
     {
       "name": "Vehicle Repairs",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://image.flaticon.com/icons/png/128/0/429.png"
     },
     {
       "name": "Equipments",
-      "url": "/../resources/androidicon/rawable-hdpi-icon.png"
+      "url": "https://cdn0.iconfinder.com/data/icons/gadgets-16/128/tools_settings_equipment_instruments-128.png"
+    },
+    {
+      "name": "CCTV",
+      "url": "https://image.flaticon.com/icons/png/128/534/534204.png"
+    },
+    {
+      "name": "Solar Panel Fixing",
+      "url": "https://cdn4.iconfinder.com/data/icons/industrial-vol-2/72/93-128.png"
+    },
+    {
+      "name": "Rent Tools ",
+      "url": "https://www.shareicon.net/data/128x128/2015/12/31/696128_rent_512x512.png"
     }
   ];
   @ViewChild(Nav) nav: Nav;
@@ -83,7 +96,7 @@ export class WelcomePage {
   helpMenuItems: Array<MenuItem>;
 
 
-  constructor(public navCtrl: NavController,public service: PropertyService,
+  constructor(public navCtrl: NavController,
     public navParams: NavParams, private aFauth: AngularFireAuth,
     private toast: ToastController, private db: AngularFireDatabase, public events: Events) {
      
@@ -106,7 +119,7 @@ export class WelcomePage {
     this.userEmail = navParams.get('uName');
     console.log("logged as --> " + JSON.stringify(this.userType));
     console.log("logged as --> " + JSON.stringify(this.userEmail));
-this.service.tempWorkerId=this.userEmail;
+// this.service.tempWorkerId=this.userEmail;
 
     events.subscribe('user:created', (data: any) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
@@ -170,6 +183,15 @@ this.getChats();
       username: myTag,
       toId:this.userEmail,
       userType:'Worker'
+  }
+  );
+  }
+  chatUser(myTag:string){
+    this.navCtrl.push(ChatPage, {
+      chatItem: '',
+      username: myTag,
+      toId:this.userEmail,
+      userType:'User'
   }
   );
   }

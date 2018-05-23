@@ -20,24 +20,21 @@
 
       <ion-card style="height: 60px;box-shadow: 12px 13px 13px #352F48;position: absolute">
 
-          <ion-item *ngIf="userType=='Worker'" >
+          <ion-item >
               <ion-badge item-end *ngFor="let chat of chats ; let index=i" (click)="chatWorker(chat.$key)" >{{ chat.$key }} {{[chat.$key].length}} </ion-badge> <br/>
           </ion-item>
+          
 
       </ion-card>
       <ion-card class="table" style="box-shadow: 12px 13px 13px #352F48;    margin-top: 89px">
           <ion-content padding>
               <ion-grid text-center style="margin: 3;">
                 <ion-row  wrap style="margin: -16px;">
-                  <ion-col *ngFor="let item of workers"  width-40> <ion-img width="70" height="80" src="item.url"  (click)="openPage()"></ion-img> <p> {{item.name}}</p></ion-col>
-                  
+                  <ion-col *ngFor="let item of workers"  width-40> <ion-img width="70" height="80" [src]="item.url"  (click)="openPage()"></ion-img> <strong><p> {{item.name}}</p></strong></ion-col>
                 </ion-row>
               </ion-grid>
             </ion-content>
       </ion-card>
-
       <!-- <button ion-button (tap)="addNote()"></button> -->
-
   </ion-slides>
-
 </ion-content>

@@ -18,9 +18,9 @@ export class EditPage {
   email:string='';
   properties:any[];
   user ={} as User;
-  constructor(public service: PropertyService,public navCtrl: NavController, public navParams: NavParams,private afd: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private afd: AngularFireDatabase) {
    this.afd.list('/Workers/asd').subscribe(data => {
-      this.email=this.service.tempWorkerId
+      // this.email=this.service.tempWorkerId
       this.properties = data;
     for(let item of this.properties){
       console.log(item);
