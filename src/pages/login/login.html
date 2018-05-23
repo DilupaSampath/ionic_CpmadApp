@@ -9,11 +9,11 @@
   
   <ion-content padding>
     <ion-item>
-        <ion-label><strong>{{userType}}</strong></ion-label>
+        <ion-label ><strong>Login as {{userType}}</strong></ion-label>
         <ion-toggle [(ngModel)]="togglestate" (ngModelChange)="changeUserTpe()" ></ion-toggle>
     </ion-item>
   <ion-item>
-    <ion-label>Email Address</ion-label>
+    <ion-label>Email</ion-label>
     <ion-input type="text" [(ngModel)]="user.email"></ion-input>
   </ion-item>
   <ion-item>

@@ -47,6 +47,7 @@ IsStateChange=true;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+    this.IsStateChange=true;
     // this.IsStateChange=true;
     // this.db.list('/user/_vguvqi14j').push({
     //   "id": "_vguvqi14j",
@@ -75,7 +76,7 @@ IsStateChange=true;
         "city": user.city,
         "district": user.district,
         "type": user.type,
-        "experience": user.experience,
+        "experience": user.experience+"Years",
         "phonenumber":user.phonenumber,
         "picture": "https://media.istockphoto.com/vectors/service-icon-vector-male-person-worker-avatar-profile-with-gear-cog-vector-id900946328",
         "thumbnail": "https://media.istockphoto.com/vectors/service-icon-vector-male-person-worker-avatar-profile-with-gear-cog-vector-id900946328",
@@ -95,7 +96,7 @@ IsStateChange=true;
     this.addUserToChatRoom(id,user.name);
     
     this.showAlert();
-    this.navCtrl.push(WelcomePage,{type:this.userType});
+    this.navCtrl.push(WelcomePage,{type:this.userType,uName:user.email});
    
    }
    catch(e){

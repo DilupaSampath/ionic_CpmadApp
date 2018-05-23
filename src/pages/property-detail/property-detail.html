@@ -9,8 +9,8 @@
       <img src="{{property.picture}}" />
       <ion-card-content>
           <h2 class="card-title">{{property.name}}</h2>
-          <p>{{property.type}}</p>
-          <p>{{property.contact}}</p>
+          <p>{{property.type}}</p> 
+         
       </ion-card-content>
       <ion-list>
 
@@ -25,7 +25,12 @@
               <ion-note item-right>{{property.experience}}</ion-note>
           </ion-item>
           <ion-item>
-              <button ion-button style="color: white">
+            <ion-icon item-left name="md-call"></ion-icon>
+            <h3>Mobile</h3>
+            <ion-note item-right>{{property.phonenumber}}</ion-note>
+        </ion-item>
+          <ion-item>
+              <button ion-button style="color: white" (click)= "addLike(property.id)">
                   <ion-icon item-left name="md-thumbs-up" style="color:green"> </ion-icon>
                   {{property.unlikes}}
               </button>

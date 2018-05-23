@@ -20,10 +20,13 @@ export class PropertyDetailPage {
     Subscription;
     messages: object[] = [];
     userEmail:string;
-
+    count=0;
     constructor(private alertCtrl: AlertController,private afd: AngularFireDatabase, private db: AngularFireDatabase, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public navParams: NavParams, public propertyService: PropertyService, public toastCtrl: ToastController) {
+        
+        
+        
         this.property = this.navParams.data;
-        console.log(this.property.id);
+        console.log(this.property.contact);
      
         this.noteListRef = this.db.object('Workers/asd/');
 
@@ -32,41 +35,37 @@ export class PropertyDetailPage {
             });
 
 
-        console.log("noteListRefAll 2st -->"+this.property.Uemail);
+        console.log("noteListRefAll 2st -->"+this.property.id);
+        this.db.list('/likes/'+this.property.id).subscribe( (data:any[]) => {
+            
+            for(let item of data){
+                console.log(item);
+            }
+         
+           
+        });
+
     }
     ionViewDidLoad() {
 
-        // console.log("noteListRefAll 1st importent on --> "+ this.noteListRefAll[0]);
-
-        // this._Id = this.property.id;
-        // this.username = this.property.name;
-        
-        // console.log("property   this._Id --> " + JSON.stringify(this._Id));
-        // console.log("property   this._Id --> " + JSON.stringify(this.username));
-        // console.log("property   this._Id --> " + JSON.stringify(this.userEmail));
     }
-    // addLike(id: string) {
-    //     // console.log("like id->" + id);
-    //     // this.noteListRef.id = id;
-    //     // let count = 0;
-
-    //     // if (count == 0) {
-    //     //     console.log("like added->" + (count + 1));
-    //     //     this.noteListRef.update(this.noteListRef.id, {
-    //     //         "likes": 10
-    //     //     }).then(uUser => { this.navCtrl.pop(); });
-    //     //     // return noteListRef.set({"likes":count+1});
-    //     //     // return noteListRef.update({"likes":count+1});
-    //     // }
-    // }
+    
+addLike(id:string){
+let count=10;
 
 
+console.log("like added for id --> " +id);
+        this.db.list('/likes/'+id).push({
+          "likes":13
+      });
+}
+temp(id:string){
+    this.db.object('/likes/'+id).subscribe( data => {
+         });
+}
 
     chat() {
-        // console.log("noteListRefAll 1st importent --> " + this.noteListRefAll[0]);
-        // console.log("property --> "+ JSON.stringify(this.property));
-       
-        // this.noteListRef = this.db.object('Workers/asd/' + this._Id);
+        
         this.navCtrl.push(ChatPage, {
             chatItem: this._Id,
             username: this.property.Uemail,
