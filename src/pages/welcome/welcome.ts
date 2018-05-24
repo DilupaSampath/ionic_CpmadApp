@@ -98,7 +98,7 @@ export class WelcomePage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams, private aFauth: AngularFireAuth,
-    private toast: ToastController, private db: AngularFireDatabase, public events: Events) {
+    private toastCtrl: ToastController, private db: AngularFireDatabase, public events: Events) {
      
     
     this.appMenuItems = [
@@ -134,19 +134,12 @@ this.getChats();
     this.aFauth.auth.onAuthStateChanged((user) => {
       console.log("user--> " + JSON.stringify(user));
       if (user && user.email && user.uid) {
-        this.toast.create({
-          message: 'Welcome to EasyPooky , ' + user.email,
-          duration: 3000
-        }).present();
+        this.presentToast( 'Hi.. '+user.email+ ' Welcome to EasyPooky');
+
 
       } else {
         // User is not logged in, redirect to where you need to.
-        this.toast.create(
-          {
-            message: 'Could not find authentication details.',
-            duration: 3000
-          }
-        ).present();
+        this.presentToast(' Could not find authentication details for '+user.email) ;
       }
     });
 
@@ -196,6 +189,20 @@ this.getChats();
   );
   }
 
+
+  presentToast(message:string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
 
 
 }

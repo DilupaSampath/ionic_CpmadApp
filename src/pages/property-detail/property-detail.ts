@@ -20,7 +20,10 @@ export class PropertyDetailPage {
     Subscription;
     messages: object[] = [];
     userEmail:string;
-    count=0;
+    Likecount=0;
+    likeStatus='';
+    unlikeStatus='';
+    UnLikecount=0;
     constructor(private alertCtrl: AlertController,private afd: AngularFireDatabase, private db: AngularFireDatabase, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public navParams: NavParams, public propertyService: PropertyService, public toastCtrl: ToastController) {
         
         
@@ -36,14 +39,22 @@ export class PropertyDetailPage {
 
 
         console.log("noteListRefAll 2st -->"+this.property.id);
-        this.db.list('/likes/'+this.property.id).subscribe( (data:any[]) => {
+        this.db.object('/likes/'+this.property.id).subscribe( data => {
+            console.log(data['likes']);
+            this.Likecount = data.likes;
             
-            for(let item of data){
-                console.log(item);
-            }
-         
+            console.log(this.Likecount);
+          });
+          this.db.object('/unlikes/'+this.property.id).subscribe( data => {
+            console.log(data['unlikes']);
+
+            this.UnLikecount = data.unlikes;
            
-        });
+            if(this.UnLikecount<=0){
+                this.UnLikecount=0;
+            }
+            console.log(this.UnLikecount);
+          });
 
     }
     ionViewDidLoad() {
@@ -51,18 +62,38 @@ export class PropertyDetailPage {
     }
     
 addLike(id:string){
+    if(this.likeStatus != 'liked'){
 let count=10;
-
-
+if(this.Likecount==undefined){
+    this.Likecount=0;
+}
 console.log("like added for id --> " +id);
-        this.db.list('/likes/'+id).push({
-          "likes":13
+        this.db.object('/likes/'+id).set({
+            "id":id,
+            "likes":(this.Likecount)+1
+            
       });
+      
+    }
+    this.likeStatus='liked';
 }
-temp(id:string){
-    this.db.object('/likes/'+id).subscribe( data => {
-         });
-}
+
+addUnLike(id:string){
+    if(this.unlikeStatus != 'unliked'){
+    let count=10;
+    if(this.UnLikecount==undefined){
+        this.UnLikecount=0;
+    }
+    console.log("like added for id --> " +this.UnLikecount);
+            this.db.object('/unlikes/'+id).set({
+                "id":id,
+                "unlikes":(this.UnLikecount)+1
+          });
+        }
+     
+        this.unlikeStatus='unliked';
+    }
+    
 
     chat() {
         
@@ -113,16 +144,4 @@ temp(id:string){
         alertBox.present();
       }
   
-    //   loginUser() {
-    //       if(/^[a-zA-Z0-9]+$/.test(this.username)) {
-    //           // all cool
-    //           this.navCtrl.push(ChatPage, {
-    //               username: this.username
-    //           });
-    //       } else {
-    //           this.showAlert('Error', 'Invalid Username');
-    //       }
-    //   }
-  
-
 }

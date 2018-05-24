@@ -7,9 +7,10 @@
   </ion-header>
   
   
-  <ion-content padding>
-    <ion-item>
-        <ion-label ><strong>Login as {{userType}}</strong></ion-label>
+  <ion-content padding >
+      <ion-card style="margin-left: -6px;width: calc(112% - 20px);    height: 180px; box-shadow: -1px 9px 32px #0c0c0c;">
+    <ion-item style="background-color: #0892E3;    margin-left: -17px ;margin-left:1px ">
+        <ion-label ><strong style="    padding-left: 70px;">Login as {{userType}}</strong></ion-label>
         <ion-toggle [(ngModel)]="togglestate" (ngModelChange)="changeUserTpe()" ></ion-toggle>
     </ion-item>
   <ion-item>
@@ -20,7 +21,8 @@
     <ion-label>Password</ion-label>
     <ion-input type="password" [(ngModel)]="user.password"></ion-input>
   </ion-item>
-  <button ion-button (click)="login(user)">Login</button>
-  <button ion-button (click)="register()">Register</button>
+  <button ion-button (click)="login(user)" style="border-radius: 15px;padding-left: 78px;    background-color: #35464c">Login</button>
+  <button ion-button (click)="register()" style="border-radius: 15px;padding-right: 64px;    background-color: #35464c">Register</button>
+</ion-card>
   </ion-content>
   
