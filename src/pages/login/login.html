@@ -1,28 +1,27 @@
-<ion-header>
+ 
   
-    <ion-navbar>
-      <ion-title>login</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content padding >
-      <ion-card style="margin-left: -6px;width: calc(112% - 20px);    height: 180px; box-shadow: -1px 9px 32px #0c0c0c;">
-    <ion-item style="background-color: #0892E3;    margin-left: -17px ;margin-left:1px ">
-        <ion-label ><strong style="    padding-left: 70px;">Login as {{userType}}</strong></ion-label>
+  <ion-content padding style="background-color: #30425a" >
+      <div style=" padding-left: 73px;padding-top: 53px;">
+          <h1><strong style="color: orange;   "> EasyPooky</strong></h1>  
+          <p style="color: #bfd0d6;">We make easy life</p>
+        </div>
+      <div style="padding-top: 46px">
+    <ion-item style="background-color:transparent;    margin-left: -17px ;margin-left:1px ">
+        <ion-label ><strong style="color:white ; padding-left: 67px;">Login as {{userType}}</strong></ion-label>
         <ion-toggle [(ngModel)]="togglestate" (ngModelChange)="changeUserTpe()" ></ion-toggle>
     </ion-item>
-  <ion-item>
-    <ion-label>Email</ion-label>
-    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  <ion-item style="background-color:transparent;">
+    <ion-label><ion-icon style="color: white" name="md-person"></ion-icon></ion-label>
+    <ion-input style="color: white" type="text" [(ngModel)]="user.email"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  <ion-item style="background-color:transparent;">
+    <ion-label><ion-icon style="color: white" name="md-lock"></ion-icon></ion-label>
+    <ion-input style="color: white" type="password" [(ngModel)]="user.password"></ion-input>
   </ion-item>
-  <button ion-button (click)="login(user)" style="border-radius: 15px;padding-left: 78px;    background-color: #35464c">Login</button>
-  <button ion-button (click)="register()" style="border-radius: 15px;padding-right: 64px;    background-color: #35464c">Register</button>
-</ion-card>
+  <div style="background-color:transparent;    margin-top: 34px;">
+  <button ion-button (click)="login(user)" style="   width: 266px;margin-left: 12px;   background-color: #049898">Login</button>
+  <button ion-button (click)="register()" style="    width: 266px; margin-left: 12px;  background-color: #049898">Register</button>
+  </div>
+</div>
   </ion-content>
   
