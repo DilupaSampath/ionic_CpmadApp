@@ -1,34 +1,34 @@
 <ion-menu [content]="content">
     
-      <ion-content>
+      <ion-content >
     
       
     
         <ion-list>
-          <ion-list-header>
+          <ion-list-header style="color: black;">
             Shop
           </ion-list-header>
-          <button menuClose ion-item *ngFor="let menuItem of appMenuItems" (click)="openPage(menuItem)">
+          <button style="color: black;" menuClose ion-item *ngFor="let menuItem of appMenuItems" (click)="openPage(menuItem)">
             <ion-icon item-left [name]="menuItem.icon"></ion-icon>
             {{menuItem.title}}
           </button>
         </ion-list>
     
         <ion-list>
-          <ion-list-header>
+          <ion-list-header style="color: black;">
             Help
           </ion-list-header>
-          <button menuClose ion-item *ngFor="let menuItem of helpMenuItems" (click)="openPage(menuItem)">
+          <button style="color: black;" menuClose ion-item *ngFor="let menuItem of helpMenuItems" (click)="openPage(menuItem)">
             <ion-icon item-left [name]="menuItem.icon"></ion-icon>
             {{menuItem.title}}
           </button>
         </ion-list>
     
         <ion-list>
-          <ion-list-header>
+          <ion-list-header style="color: black;">
             Account
           </ion-list-header>
-          <button menuClose ion-item *ngFor="let menuItem of accountMenuItems" (click)="openPage(menuItem)">
+          <button style="color: black;" menuClose ion-item *ngFor="let menuItem of accountMenuItems" (click)="openPage(menuItem)">
             <ion-icon item-left [name]="menuItem.icon"></ion-icon>
             {{menuItem.title}}
           </button>

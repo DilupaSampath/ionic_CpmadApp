@@ -4,32 +4,32 @@
         </ion-navbar>
       </ion-header>
       
-      <ion-content>
-        <ion-card *ngIf="property.id">
+      <ion-content  style="background-color: #3d659a">
+        <ion-card *ngIf="property.id" style="    background-color: transparent;">
             <img src="{{property.picture}}" />
             <ion-card-content>
                 <h2 class="card-title">{{property.name}}</h2>
                 <p>{{property.type}}</p> 
                
             </ion-card-content>
-            <ion-list>
+            <ion-list style=" background-color: transparent;">
       
-                <ion-item>
+                <ion-item style=" background-color: transparent;">
                     <ion-icon item-left name="ios-home"></ion-icon>
                     <h3>Address</h3>
                     <ion-note item-right>{{property.address}}</ion-note>
                 </ion-item>
-                <ion-item>
+                <ion-item style="    background-color: transparent;">
                     <ion-icon item-left name="md-trending-up"></ion-icon>
                     <h3>Experience</h3>
                     <ion-note item-right>{{property.experience}}</ion-note>
                 </ion-item>
-                <ion-item>
+                <ion-item style="    background-color: transparent;">
                   <ion-icon item-left name="md-call"></ion-icon>
                   <h3>Mobile</h3>
                   <ion-note item-right>{{property.phonenumber}}</ion-note>
               </ion-item>
-                <ion-item>
+                <ion-item style="    background-color: transparent;">
                     <button ion-button style="color: white" (click)= "addLike(property.id)">
                         <ion-icon item-left name="md-thumbs-up" style="color:green"> </ion-icon>
                         {{Likecount}}              </button>
@@ -40,7 +40,7 @@
       
                 </ion-item>
       
-                <button ion-item (click)="openBrokerDetail(property.name)">
+                <button ion-item (click)="openBrokerDetail(property.name)" style="    background-color: transparent;">
                     <!-- <ion-avatar item-left>
                         <img src="{{property.broker.picture}}"/>
                     </ion-avatar>
@@ -49,8 +49,8 @@
                 </button>
             </ion-list>
       
-            <ion-item>
-                <button ion-button icon-left (click)="chat()" clear item-left>
+            <ion-item style="    background-color: transparent;">
+                <button ion-button icon-left (click)="chat()" clear item-left >
                     <ion-icon name="ios-text"></ion-icon>
                     Chat
                 </button>

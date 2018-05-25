@@ -33,11 +33,11 @@ export class WelcomePage {
   workers: any[] = [
     {
       "name": 'Masons',
-      "url": 'https://image.freepik.com/free-icon/construction-worker_318-105590.jpg'
+      "url": 'https://d30y9cdsu7xlg0.cloudfront.net/png/51418-200.png'
     },
     {
       "name": "Tile",
-      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX3exoyroQB1Ymb1-kQ0G0fV_ePRdIDR9j7rdmNcXi5aELKG5G"
+      "url": "https://cdn.iconscout.com/public/images/icon/free/png-512/tile-view-37084e184d0d3813-512x512.png"
     },
     {
       "name": "Carpenters",
@@ -134,7 +134,7 @@ this.getChats();
     this.aFauth.auth.onAuthStateChanged((user) => {
       console.log("user--> " + JSON.stringify(user));
       if (user && user.email && user.uid) {
-        this.presentToast( 'Hi.. '+user.email+ ' Welcome to EasyPooky');
+        this.presentToast( 'Hi.. '+user.email+ ' Welcome to HelpHands');
 
 
       } else {
