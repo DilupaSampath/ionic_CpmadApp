@@ -7,6 +7,7 @@ import {PropertyListPage} from '../pages/property-list/property-list';
 import {WelcomePage} from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
 import { EditPage } from '../pages/edit/edit';
+import { AppoinmentsPage } from '../pages/appoinments/appoinments';
 
 export interface MenuItem {
     title: string;
@@ -40,6 +41,8 @@ export class MyApp {
         this.accountMenuItems = [
             {title: 'My Account', component: EditPage, icon: 'ios-contact'},
             {title: 'Logout', component: LoginPage, icon: 'log-out'},
+            {title: 'Appoinments', component: AppoinmentsPage, icon: 'log-out'}
+            
         ];
 
         this.helpMenuItems = [

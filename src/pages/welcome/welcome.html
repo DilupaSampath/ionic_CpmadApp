@@ -19,7 +19,7 @@
 
 
       <ion-card style="height: 60px;box-shadow: 12px 13px 13px #352F48;position: absolute">
-
+<button ion-button (click)="appoinmentPage()">Appoinments</button>
           <ion-item >
               <ion-badge item-end *ngFor="let chat of chats ; let index=i" (click)="chatWorker(chat.$key)" >{{ chat.$key }} {{[chat.$key].length}} </ion-badge> <br/>
           </ion-item>

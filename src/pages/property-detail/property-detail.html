@@ -10,7 +10,9 @@
             <ion-card-content>
                 <h2 class="card-title">{{property.name}}</h2>
                 <p>{{property.type}}</p> 
-               
+                <button ion-button (click)="makeAppoinment()">
+                        <ion-icon item-right name="md-calendar" > Make Appoinment</ion-icon>
+                </button>
             </ion-card-content>
             <ion-list style=" background-color: transparent;">
       

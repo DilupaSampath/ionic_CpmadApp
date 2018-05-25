@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { PropertyService } from './providers/property-service-rest';
 import { ChatPage } from '../pages/chat/chat';
 import { EditPage } from '../pages/edit/edit';
+import { AppoinmentsPage } from '../pages/appoinments/appoinments';
 
 const firebaseConfig = {
   apiKey: "AIzaSyD8pYw45d3JzBxAnSJFxSmRDmiKnivlp5Y",
@@ -35,7 +36,9 @@ const firebaseConfig = {
     PropertyDetailPage,
     LoginPage,
     RegisterPage ,
-    EditPage
+    EditPage,
+    AppoinmentsPage
+
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ const firebaseConfig = {
     PropertyDetailPage,
     LoginPage,
     RegisterPage,
-    EditPage
+    EditPage,
+    AppoinmentsPage
   ],
   providers: [
     StatusBar,

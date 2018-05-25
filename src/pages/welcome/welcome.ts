@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { ChatPage } from '../chat/chat';
 import { EditPage } from '../edit/edit';
 import { PropertyService } from '../../app/providers/property-service-mock';
+import { AppoinmentsPage } from '../appoinments/appoinments';
 export interface MenuItem {
   title: string;
   component: any;
@@ -179,6 +180,16 @@ this.getChats();
   }
   );
   }
+  appoinmentPage(){
+    console.log("from welcome-->"+this.userEmail);
+    this.navCtrl.push(AppoinmentsPage, {
+      loginUser:"",
+      toId:this.userEmail,
+      userType:'Worker'
+  }
+  );
+  }
+
   chatUser(myTag:string){
     this.navCtrl.push(ChatPage, {
       chatItem: '',

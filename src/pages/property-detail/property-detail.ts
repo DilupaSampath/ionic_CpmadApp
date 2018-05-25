@@ -24,10 +24,11 @@ export class PropertyDetailPage {
     likeStatus='';
     unlikeStatus='';
     UnLikecount=0;
+    madeAppoinment=false;
     constructor(private alertCtrl: AlertController,private afd: AngularFireDatabase, private db: AngularFireDatabase, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public navParams: NavParams, public propertyService: PropertyService, public toastCtrl: ToastController) {
         
         
-        
+        this.madeAppoinment=false;
         this.property = this.navParams.data;
         console.log(this.property.contact);
      
@@ -58,7 +59,7 @@ export class PropertyDetailPage {
 
     }
     ionViewDidLoad() {
-
+        this.madeAppoinment=false;
     }
     
 addLike(id:string){
@@ -94,9 +95,25 @@ addUnLike(id:string){
         this.unlikeStatus='unliked';
     }
     
+makeAppoinment(){
+    console.log("user type cat --> "+'/appointments/'+this.property.email.replace(/[^a-zA-Z 0-9]+/g,'')+"/"+ this.property.userType.replace(/[^a-zA-Z 0-9]+/g,''));
+   
+    this.db.list('/appointments/'+this.property.email.replace(/[^a-zA-Z 0-9]+/g,'')).push({
+        username: this.property.Uemail,
+        message: "As we discus... i made an appoinment"
+      }).then( () => {
+this.presentToast("You made appoinmet to "+this.property.email+". Thank you for using <strong>HelpHands</strong> ");
+this.madeAppoinment=true;      
 
+// message is sent
+      }).catch( () => {
+        // some error. maybe firebase is unreachable
+      });
+
+}
     chat() {
-        
+        console.log("sender-->"+ this.property.Uemail);
+        console.log("reciver-->"+ this.property.email);
         this.navCtrl.push(ChatPage, {
             chatItem: this._Id,
             username: this.property.Uemail,
@@ -143,5 +160,17 @@ addUnLike(id:string){
         });
         alertBox.present();
       }
+   presentToast(message:string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
   
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
 }
