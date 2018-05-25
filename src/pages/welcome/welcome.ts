@@ -135,7 +135,7 @@ this.getChats();
     this.aFauth.auth.onAuthStateChanged((user) => {
       console.log("user--> " + JSON.stringify(user));
       if (user && user.email && user.uid) {
-        this.presentToast( 'Hi.. '+user.email+ ' Welcome to HelpHands');
+        this.presentToast( 'Hi.. '+user.email+ ' Welcome to EasyPooky');
 
 
       } else {
@@ -185,7 +185,7 @@ this.getChats();
     this.navCtrl.push(AppoinmentsPage, {
       loginUser:"",
       toId:this.userEmail,
-      userType:'Worker'
+      userType:this.userType
   }
   );
   }

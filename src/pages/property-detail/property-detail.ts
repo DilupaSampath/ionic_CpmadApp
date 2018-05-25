@@ -98,17 +98,29 @@ addUnLike(id:string){
 makeAppoinment(){
     console.log("user type cat --> "+'/appointments/'+this.property.email.replace(/[^a-zA-Z 0-9]+/g,'')+"/"+ this.property.userType.replace(/[^a-zA-Z 0-9]+/g,''));
    
-    this.db.list('/appointments/'+this.property.email.replace(/[^a-zA-Z 0-9]+/g,'')).push({
+    this.db.object('/appointments/'+this.property.email.replace(/[^a-zA-Z 0-9]+/g,'')+"/"+this.property.Uemail.replace(/[^a-zA-Z 0-9]+/g,'')).set({
         username: this.property.Uemail,
-        message: "As we discus... i made an appoinment"
+        message: "As we discus... i made an appoinment",
+        status:"Pending"
       }).then( () => {
 this.presentToast("You made appoinmet to "+this.property.email+". Thank you for using <strong>HelpHands</strong> ");
 this.madeAppoinment=true;      
 
 // message is sent
       }).catch( () => {
+        // some error. maybe firebase is unreachable  this.property.email
+      });
+
+      this.db.object('/appointmentsView/'+this.property.Uemail.replace(/[^a-zA-Z 0-9]+/g,'')+"/"+this.property.email.replace(/[^a-zA-Z 0-9]+/g,'')).set({
+        username:this.property.email,
+        status:"Pending"
+      }).then( () => {
+// message is sent
+      }).catch( () => {
         // some error. maybe firebase is unreachable
       });
+
+
 
 }
     chat() {
