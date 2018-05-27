@@ -95,7 +95,7 @@ export class WelcomePage {
   accountMenuItems: Array<MenuItem>;
 
   helpMenuItems: Array<MenuItem>;
-
+  selectedMessage:string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams, private aFauth: AngularFireAuth,
@@ -163,15 +163,18 @@ this.getChats();
     this.Subscription = this.db.list('/chat/' + this.userEmail.replace(/[^a-zA-Z 0-9]+/g, '')).subscribe(data => {
       this.chats = data;
       for(let item of this.chats){
-        console.log([item].length);
+        console.log(item);  
+        console.log(item.username);
+        console.log(item['username']);
+        
       }
     });
   }
   //    addNote() {
   //        return this.noteListRef.push(this.workers1);
   //    }
-  chatWorker(myTag:string){
-    
+  chatWorker(myTag){
+    console.log(myTag );
     this.navCtrl.push(ChatPage, {
       chatItem: '',
       username: myTag,
@@ -179,6 +182,9 @@ this.getChats();
       userType:'Worker'
   }
   );
+  // this.db.object('/chat/'+this.userEmail.replace(/[^a-zA-Z 0-9]+/g,'')+"/"+ myTag.replace(/[^a-zA-Z 0-9]+/g,'')).set({
+  //   messageType:"read"
+  // })
   }
   appoinmentPage(){
     console.log("from welcome-->"+this.userEmail);

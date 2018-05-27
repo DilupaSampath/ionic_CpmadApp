@@ -1,5 +1,14 @@
 page-welcome {
-    
+  .select-md {
+    padding: 0px 8px 13px 16px;
+}
+ion-select{
+  background-color: aqua;
+  max-width: 70%;
+  border-radius: 29px;
+  height: 31px;
+  margin-top: 5px;
+}  
       font-weight: 300;
     
       ion-slide {
@@ -44,3 +53,4 @@ page-welcome {
   .img-loaded:hover{
     background-color: #049898;
   }
+  

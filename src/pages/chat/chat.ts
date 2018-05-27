@@ -35,24 +35,28 @@ console.log("user type cat --> "+'/chat/'+this.toId.replace(/[^a-zA-Z 0-9]+/g,''
     }
 
     sendMessage() {
+      let send='notRead';
 if(this.userType=="Worker"){
   this.db.list('/chat/'+this.toId.replace(/[^a-zA-Z 0-9]+/g,'')+"/"+ this.username.replace(/[^a-zA-Z 0-9]+/g,'')).push({
     username: this.toId,
-    message: this.message
+    message: this.message,
+    messageType:send
   }).then( () => {
     // message is sent
-  }).catch( () => {
-    // some error. maybe firebase is unreachable
   });
 }else{
       this.db.list('/chat/'+this.toId.replace(/[^a-zA-Z 0-9]+/g,'')+"/"+ this.username.replace(/[^a-zA-Z 0-9]+/g,'')).push({
         username: this.username,
-        message: this.message
+        message: this.message,
+        messageType:send
       }).then( () => {
         // message is sent
-      }).catch( () => {
-        // some error. maybe firebase is unreachable
       });
+      this.db.object('/chatMessageType/'+this.toId.replace(/[^a-zA-Z 0-9]+/g,'')+"/"+ this.username.replace(/[^a-zA-Z 0-9]+/g,'')).set({
+        username: this.username,
+        messageType:send
+      })
+
     }
       this.message = '';
     }

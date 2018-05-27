@@ -4,7 +4,7 @@
           <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>Welcome to
-          <strong style="color: orange"> EasyPooky</strong>
+          <strong style="color: orange"> Help Hands</strong>
       </ion-title>
   </ion-navbar>
 </ion-header>
@@ -18,11 +18,15 @@
       <!-- <p>Your dream house is just a few taps away! Select Properties in the menu to start your search.</p> -->
 
 
-      <ion-card style="height: 60px;box-shadow: 12px 13px 13px #352F48;position: absolute">
-<button ion-button (click)="appoinmentPage()">Appoinments</button>
-          <ion-item >
+      <ion-card style="height: 60px;box-shadow: 12px 13px 13px #352F48;position: absolute;    background-color: #b3e0e0;">
+<!-- <button ion-button (click)="appoinmentPage()">Appoinments</button> -->
+          <ion-item style="    background-color: #b3e0e0;" >
               <!-- <ion-badge item-end *ngFor="let chat of chats ; let index=i" (click)="chatWorker(chat.$key)" >{{ chat.$key }} {{[chat.$key].length}} </ion-badge> <br/> -->
-          </ion-item>
+              <ion-select interface="action-sheet" [ngModel]="selectedMessage" (ngModelChange)="chatWorker($event)" >
+                  <ion-option selected>My Chat messages</ion-option>  
+                <ion-option *ngFor="let chat of chats ; let index=i">{{ chat.$key }}</ion-option>
+             </ion-select>
+            </ion-item>
           
 
       </ion-card>
@@ -38,7 +42,7 @@
             <ion-content *ngIf="userType=='Worker'" padding style="background-color: #ececec">
                     <ion-grid  text-center style="margin: 3;">
                       <ion-row  wrap style="margin: -16px;">
-                        <ion-badge item-end *ngFor="let chat of chats ; let index=i" (click)="chatWorker(chat.$key)" >{{ chat.$key }} {{[chat.$key].length}} </ion-badge> 
+                        <!-- <ion-badge item-end *ngFor="let chat of chats ; let index=i" (click)="chatWorker(chat.$key)" >{{ chat.$key }} {{[chat.$key].length}} </ion-badge>  -->
                       </ion-row>
                     </ion-grid>
                   </ion-content>
